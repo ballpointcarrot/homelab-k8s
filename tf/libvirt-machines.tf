@@ -16,13 +16,13 @@ terraform {
 }
 
 provider "libvirt" {
-  uri = "qemu://system"
+  uri = "qemu:///system"
 }
 
 resource "libvirt_pool" "volumetmp" {
   name = "${var.cluster_name}-pool"
   type = "dir"
-  path = "/var/tmp/${var.cluster_name}-pool"
+  path = "/var/tmp/libvirt/${var.cluster_name}-pool"
 }
 
 resource "libvirt_volume" "base" {
@@ -57,7 +57,7 @@ resource "libvirt_domain" "machine" {
   coreos_ignition = libvirt_ignition.ignition[each.key].id
 
   disk {
-    volume_id = libvirt_volume.vm-disk[each.key].id
+    volume_id = libvirt_volume.vm_disk[each.key].id
   }
 
   graphics {

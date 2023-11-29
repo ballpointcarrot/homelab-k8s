@@ -1,4 +1,6 @@
 ---
+variant: flatcar
+version: 1.1.0
 passwd:
   users:
     - name: core
@@ -12,5 +14,5 @@ storage:
         inline: |
           #!/bin/bash
           set -euo pipefail
-          hostname="${hostname}"
+          hostname="$(hostname)"
           echo "My name is ${name} and the hostname is $${hostname}"
