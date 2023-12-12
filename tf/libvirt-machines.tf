@@ -65,7 +65,7 @@ resource "libvirt_domain" "machine" {
   }
 
   network_interface {
-    network_name   = "default"
+    network_name   = "bridged-network"
     wait_for_lease = true
   }
 }
