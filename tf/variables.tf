@@ -35,3 +35,14 @@ variable "k3s_cluster_token" {
   type = string
   default = "something_simple"
 }
+
+variable "subnet_prefix" {
+  description = "the first three of the IPv4 addresses to associate with the nodes"
+  type = string
+  default = "10.11.13"
+}
+
+variable "bridge_id" {
+  description = "the device ID for the network bridge"
+  type = "string"
+}
