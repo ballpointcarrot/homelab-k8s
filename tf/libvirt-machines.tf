@@ -82,5 +82,6 @@ data "template_file" "vm-configs" {
   vars = {
     ssh_keys = jsonencode(var.ssh_keys)
     name     = each.key
+    k3s_cluster_token = var.k3s_cluster_token
   }
 }

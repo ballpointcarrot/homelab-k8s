@@ -29,3 +29,9 @@ variable "virtual_cpus" {
   default     = 2
   description = "Number of virtual CPUs"
 }
+
+variable "k3s_cluster_token" {
+  description = "the internal synchronization token for K3s"
+  type = string
+  default = "something_simple"
+}
