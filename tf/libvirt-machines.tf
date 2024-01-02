@@ -68,7 +68,7 @@ resource "libvirt_domain" "machine" {
     hostname       = each.key
     wait_for_lease = true
     bridge         = var.bridge_id
-    address        = "${var.subnet_prefix}.${index(var.machines, each.value) + 16}"
+    addresses      = ["${var.subnet_prefix}.${index(var.machines, each.value) + 16}"]
   }
 }
 
