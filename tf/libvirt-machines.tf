@@ -65,10 +65,10 @@ resource "libvirt_domain" "machine" {
   }
 
   network_interface {
-    hostname = each.key
+    hostname       = each.key
     wait_for_lease = true
-    bridge = var.bridge_id
-    address = "${var.subnet_prefix}.${index(var.machines, each.value) + 16}"
+    bridge         = var.bridge_id
+    address        = "${var.subnet_prefix}.${index(var.machines, each.value) + 16}"
   }
 }
 
@@ -82,8 +82,8 @@ data "template_file" "vm-configs" {
   template = file("${path.module}/cl/machine-${each.key}.yaml.tmpl")
 
   vars = {
-    ssh_keys = jsonencode(var.ssh_keys)
-    hostname  = each.key
+    ssh_keys          = jsonencode(var.ssh_keys)
+    hostname          = each.key
     k3s_cluster_token = var.k3s_cluster_token
   }
 }
